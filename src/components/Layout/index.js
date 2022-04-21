@@ -54,7 +54,7 @@ const Layout = () => {
                 },
             })}
         >
-            <Outlet />  {/*"equivalent to children, but superior to load content from a mother template"*/}
+            <Outlet />
         </AppShell>
     );
 };

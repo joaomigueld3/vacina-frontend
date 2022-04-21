@@ -34,7 +34,7 @@ const User=()=>{
             await axios.delete(`http://localhost:4444/api/appointment/${_id}`)
             setAppointments(appointments.filter((app) => app._id !==_id));
             showNotification({
-                color:"red",
+                color:"green",
                 title:"Success",
                 message:"Appointment removed with success!"},
                 );
@@ -66,7 +66,7 @@ const User=()=>{
                         <th>Phone</th>
                         <th>Appointment Date</th>
                         <th>Appointment Time</th>
-                        <th>Is Solved</th>                        
+                        <th>Is Vaccinated?</th>                        
                     </tr>
                 </thead>
                 <tbody>
@@ -83,7 +83,7 @@ const User=()=>{
                         <td>{app.isSolved.toString()}</td>
                         <td>
                         <Button leftIcon={<Pencil />} variant="white" size="xs" ml={16} color="gray"
-                        onClick={onEditAppointment}>
+                        onClick={()=>navigate(app._id)}>
                         Edit Appointment
                         </Button>
                         <Button leftIcon={<Trash />} variant="white" size="xs" ml={16} color="red"

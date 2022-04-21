@@ -13,11 +13,11 @@ const Router=()=>{
     return(
         <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<Layout/>}> 
-                     <Route element={<Homes/>} index />                     
-                     <Route path="appointment" element={<Outlet/>}>
-                        <Route element={<Appointments/>} index />
-                        <Route element={<Appointment/>} path=":appointmentId"/>
+                    <Route path="/" element={<Layout />}> 
+                     <Route element={<Homes />} index />                     
+                     <Route path="appointment" element={<Outlet />}>
+                        <Route element={<Appointments />} index />
+                        <Route element={<Appointment />} path=":appId"/>
                     </Route>    
                     </Route>             
                 </Routes>
