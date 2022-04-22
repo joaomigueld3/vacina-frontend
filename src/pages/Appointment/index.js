@@ -63,10 +63,10 @@ const User=()=>{
                         <th>CPF</th>
                         <th>Email</th>
                         <th>BirthDate</th>
-                        <th>Phone</th>
                         <th>Appointment Date</th>
                         <th>Appointment Time</th>
-                        <th>Is Vaccinated?</th>                        
+                        <th>Is Vaccinated?</th>
+                        <th>Report</th>                        
                     </tr>
                 </thead>
                 <tbody>
@@ -77,10 +77,10 @@ const User=()=>{
                         <td>{app.cpf}</td>
                         <td>{app.email}</td>
                         <td>{app.birthDate}</td>
-                        <td>{app.phones} </td>
                         <td>{app.appDate}</td>
                         <td>{app.appTime}</td>
                         <td>{app.isSolved.toString()}</td>
+                        <td>{app.report} </td>
                         <td>
                         <Button leftIcon={<Pencil />} variant="white" size="xs" ml={10} color="gray"
                         onClick={()=>navigate(app._id)}>
