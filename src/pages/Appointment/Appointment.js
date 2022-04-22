@@ -79,11 +79,11 @@ import {
         });
   
         navigate("/appointment");
-      } catch (error) {
+      } catch (error){
         showNotification({
           color: "red",
           title: "Failed",
-          message: error.message,
+          message: error.response.data.message || error.message || error.data
         });
       }
     }, [form, isNewApp, navigate, appId]);
