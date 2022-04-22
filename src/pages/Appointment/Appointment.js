@@ -14,7 +14,7 @@ import {
   import DateView from 'react-datepicker';
   import "react-datepicker/dist/react-datepicker.css"
   import * as yup from 'yup';
-  
+  import FormikControl from '../Formik/FormikControl';
   import axios from "../../services/api";
     import AutoCompleteItem from "../../components/AutoCompleteItem";
   
@@ -92,17 +92,7 @@ import {
       }
     }, [form, isNewApp, navigate, appId]);
   
-    const validationSchema = yup.object({
-      name: yup.string().required('Required Field').matches(/^[A-Za-zà-úÀ-Ú ]+$/, 'Name field must have only characters a-z '),
-      cpf: yup.string().required('Required Field').min(11, 'Verify CPF').max(11, 'Verify CPF')
-        .matches(/^[0-9]*$/, 'CPF must have only numbers'),
-      email: yup.string().required('Required Field').max(30,'Email field max length is 30').nullable(),
-      birthDate: yup.date().required('Required Field').nullable(),
-      appDate: yup.date().required('Required Field').nullable(),
-      appTime: yup.date().required('Required Field').nullable(),
-      isSolved: yup.bool(),
-      report: yup.string().max(70,'Report field max lenght is 70')
-    });
+    
 
     return (
       <div>
