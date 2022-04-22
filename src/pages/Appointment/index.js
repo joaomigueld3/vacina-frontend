@@ -54,7 +54,7 @@ const User=()=>{
         <div>
             <h1>Appointment ({appointments.length})</h1>
             <Button onClick={onCreateAppointment}>  Create Appointment</Button>
-            <Table horizontalSpacing="sm" verticalSpacing="sm" fontSize="xs" 
+            <Table horizontalSpacing="xs" verticalSpacing="xs" fontSize="xs" 
             highlightOnHover={true} striped={true} overflow="hidden"  >
                 <thead>
                     <tr>
@@ -63,10 +63,10 @@ const User=()=>{
                         <th>CPF</th>
                         <th>Email</th>
                         <th>BirthDate</th>
-                        <th>Phone</th>
                         <th>Appointment Date</th>
                         <th>Appointment Time</th>
-                        <th>Is Vaccinated?</th>                        
+                        <th>Is Vaccinated?</th>
+                        <th>Report</th>                        
                     </tr>
                 </thead>
                 <tbody>
@@ -77,16 +77,16 @@ const User=()=>{
                         <td>{app.cpf}</td>
                         <td>{app.email}</td>
                         <td>{app.birthDate}</td>
-                        <td>{app.phones} </td>
                         <td>{app.appDate}</td>
                         <td>{app.appTime}</td>
                         <td>{app.isSolved.toString()}</td>
+                        <td>{app.report} </td>
                         <td>
-                        <Button leftIcon={<Pencil />} variant="white" size="xs" ml={16} color="gray"
+                        <Button leftIcon={<Pencil />} variant="white" size="xs" ml={10} color="gray"
                         onClick={()=>navigate(app._id)}>
                         Edit Appointment
                         </Button>
-                        <Button leftIcon={<Trash />} variant="white" size="xs" ml={16} color="red"
+                        <Button leftIcon={<Trash />} variant="white" size="xs" ml={10} color="red"
                         onClick={()=>onRemoveUser(app._id)}>
                         Remove Appointment
                         </Button>
@@ -96,6 +96,6 @@ const User=()=>{
                 </tbody>
             </Table>
         </div>
-    )
-}
+    );
+};
 export default User;

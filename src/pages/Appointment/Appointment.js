@@ -10,6 +10,10 @@ import {
   import { useNavigate, useParams } from "react-router-dom";
   import { useEffect, useState, useCallback } from "react";
   import { showNotification } from "@mantine/notifications";
+  import React from 'react';
+  import DateView from 'react-datepicker';
+  import "react-datepicker/dist/react-datepicker.css"
+  import * as yup from 'yup';
   
   import axios from "../../services/api";
     import AutoCompleteItem from "../../components/AutoCompleteItem";
@@ -23,10 +27,10 @@ import {
         cpf:"",
         email: "",
         birthDate: "",
-        phones: "",
         appDate:"",
         appTime:"",
         isSolved:"",
+        report: "",
         
     });
   
@@ -79,15 +83,27 @@ import {
         });
   
         navigate("/appointment");
-      } catch (error) {
+      } catch (error){
         showNotification({
           color: "red",
           title: "Failed",
-          message: error.message,
+          message: error.response.data.message || error.message || error.data
         });
       }
     }, [form, isNewApp, navigate, appId]);
   
+    const validationSchema = yup.object({
+      name: yup.string().required('Required Field').matches(/^[A-Za-zà-úÀ-Ú ]+$/, 'Name field must have only characters a-z '),
+      cpf: yup.string().required('Required Field').min(11, 'Verify CPF').max(11, 'Verify CPF')
+        .matches(/^[0-9]*$/, 'CPF must have only numbers'),
+      email: yup.string().required('Required Field').max(30,'Email field max length is 30').nullable(),
+      birthDate: yup.date().required('Required Field').nullable(),
+      appDate: yup.date().required('Required Field').nullable(),
+      appTime: yup.date().required('Required Field').nullable(),
+      isSolved: yup.bool(),
+      report: yup.string().max(70,'Report field max lenght is 70')
+    });
+
     return (
       <div>
         <h1>{pageTitle}</h1>
@@ -122,6 +138,19 @@ import {
           />
         </InputWrapper>
         
+        <DateView
+                    id="Birthdate"
+                    label="Birthdate"
+                    selected={form.birthDate}
+                    showMonthDropdown
+                    showYearDropdown
+                    dropdownMode="select"
+                    dateFormat="yyyy-MM-dd"
+                    utcOffSet="-3"
+                    required
+                    onChange={(value) => onChange({ target: { name: "birthDate", value } })}
+                  />
+
         <DatePicker
           label="Birthdate"
           onChange={(value) => onChange({ target: { name: "birthDate", value } })}
@@ -129,17 +158,7 @@ import {
           value={form.birthDate}
         />       
         
-        <InputWrapper id="phones" required label="Phone Number" mb={8}>
-          <Input
-            label="Phone Number"
-            id="phones"
-            name="phones"
-            onChange={onChange}
-            placeholder="81999999999"
-            value={form.phones}
-          />
-        </InputWrapper>
-  
+        
         <InputWrapper id="appDate" required label="Appointment Date" mb={8}>
           <Input
             label="Appointment Date"
@@ -170,6 +189,17 @@ import {
             onChange={onChange}
             placeholder="true or false"
             value={form.isSolved}
+          />
+        </InputWrapper>
+
+        <InputWrapper id="report" required label="Report" mb={8}>
+          <Input
+            label="Report"
+            id="report"
+            name="report"
+            onChange={onChange}
+            placeholder="81999999999"
+            value={form.report}
           />
         </InputWrapper>
 
