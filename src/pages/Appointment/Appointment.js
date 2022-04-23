@@ -14,9 +14,9 @@ import {
   import DateView from 'react-datepicker';
   import "react-datepicker/dist/react-datepicker.css"
   import * as yup from 'yup';
-  
+  import FormikControl from "../../components/Formik/FormikControl";
   import axios from "../../services/api";
-  import AutoCompleteItem from "../../components/AutoCompleteItem";
+    import AutoCompleteItem from "../../components/AutoCompleteItem";
   
 
   const Appointment = () => {
@@ -36,8 +36,8 @@ import {
   
     
   
-    const isNewApp = appId === "update";
-    const pageTitle = isNewApp === "Update Appointment OG";
+    const isNewApp = appId === "new";
+    const pageTitle = isNewApp ? "Create Appointment" : "Update Appointment";
   
     useEffect(() => {
       if (!isNewApp) {
@@ -70,14 +70,13 @@ import {
   
     const onSubmit = useCallback(async () => {
       try {
-        if (isNewApp) {
-          await axios.put(`/appointment/${appId}`, form);
-        }
+        await axios.put(`/appointment/${appId}`, form);
+      
   
         showNotification({
           color: "green",
           title: "Success",
-          message: `Appointment ${isNewApp}  "updated"} with success`,
+          message: `Appointment ${isNewApp ? "created" : "updated"} with success`,
         });
   
         navigate("/appointment");
@@ -113,59 +112,6 @@ import {
             onChange={onChange}
             placeholder="09125345678"
             value={form.cpf}
-          />
-        </InputWrapper>
-
-        <InputWrapper id="email" required label="Email Address" mb={8}>
-          <Input
-            id="email"
-            name="email"
-            onChange={onChange}
-            placeholder="example@mantine.com"
-            value={form.email}
-          />
-        </InputWrapper>
-        
-        <DateView
-                    id="Birthdate"
-                    label="Birthdate"
-                    selected={form.birthDate}
-                    showMonthDropdown
-                    showYearDropdown
-                    dropdownMode="select"
-                    dateFormat="yyyy-MM-dd"
-                    utcOffSet="-3"
-                    required
-                    onChange={(value) => onChange({ target: { name: "birthDate", value } })}
-                  />
-
-        <DatePicker
-          label="Birthdate"
-          onChange={(value) => onChange({ target: { name: "birthDate", value } })}
-          required
-          value={form.birthDate}
-        />       
-        
-        
-        <InputWrapper id="appDate" required label="Appointment Date" mb={8}>
-          <Input
-            label="Appointment Date"
-            id="appDate"
-            name="appDate"
-            onChange={onChange}
-            placeholder="2022-05-04"
-            value={form.appDate}
-          />
-        </InputWrapper>
-
-        <InputWrapper id="appTime" required label="Appointment Time" mb={8}>
-          <Input
-            label="Appointment Time"
-            id="appTime"
-            name="appTime"
-            onChange={onChange}
-            placeholder="8:00 ou 8:30 ou 9:00 ..."
-            value={form.appTime}
           />
         </InputWrapper>
 

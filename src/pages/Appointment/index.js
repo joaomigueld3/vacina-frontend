@@ -18,7 +18,7 @@ const User=()=>{
     },[]);  
 
     const onCreateAppointment = ()=>{
-        navigate("new")
+        //navigate("new")
     }
 
 
@@ -53,8 +53,8 @@ const User=()=>{
 
     return(
         <div>
-            <h1>Appointment ({appointments.length})</h1>
-            <Button onClick={onCreateAppointment}>  Create Appointment</Button>
+            <h1>Appointments ({appointments.length})</h1>
+            
             <Table horizontalSpacing="xs" verticalSpacing="xs" fontSize="xs" 
             highlightOnHover={true} striped={true} overflow="hidden"  >
                 <thead>

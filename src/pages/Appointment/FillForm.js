@@ -31,7 +31,7 @@ function FillForm() {
     };
 
     const isNewApp = appId === "new";
-    const pageTitle = isNewApp ? "Create Appointment" : "Update Appointment";
+    const pageTitle = isNewApp === "Create Appointment";
     
     const onSubmit = async (values) => {
         

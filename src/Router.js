@@ -17,9 +17,10 @@ const Router=()=>{
                      <Route element={<Homes />} index />                     
                      <Route path="appointment" element={<Outlet />}>
                         <Route element={<Appointments />} index />
-                        <Route element={<FillForm />} path=":new"/>
-                        <Route element={<Appointment />} path=":update"/>
-                    </Route>    
+                        <Route element={<Appointment />} path=":appId"/>
+                    </Route>
+                    
+                    <Route path=":fillForm" element={<FillForm />} />    
                     </Route>             
                 </Routes>
         <Link to="/">Home</Link> &ensp;
