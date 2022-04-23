@@ -2,8 +2,7 @@
 import Homes from "./pages/Home";
 import Appointments from "./pages/Appointment";
 import Appointment from "./pages/Appointment/Appointment";
-import Registrations from "./pages/Registration";
-import{BrowserRouter, Routes, Route, Link, Outlet} from "react-router-dom"
+import{BrowserRouter, Routes, Route, Outlet} from "react-router-dom"
 import Layout from "./components/Layout"
 import FillForm from "./pages/Appointment/FillForm";
 

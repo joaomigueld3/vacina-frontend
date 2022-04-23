@@ -2,9 +2,7 @@ import React from 'react';
 import {
     Button,
   } from "@mantine/core";
-import {
-  Formik, Form,
-} from 'formik';
+import { Formik, Form,} from 'formik';
 import * as yup from 'yup';
 import { showNotification } from "@mantine/notifications";
 import FormikControl from '../../components/Formik/FormikControl';
@@ -45,7 +43,7 @@ function FillForm() {
           showNotification({
             color: "green",
             title: "Success",
-            message: `Appointment ${isNewApp ? "created" : "updated"} with success`,
+            message: `Appointment created with success`,
           });
           navigate("/appointment");
         } 
@@ -59,20 +57,21 @@ function FillForm() {
       };
 
       const validationSchema = yup.object({
-        name: yup.string().required('Required Field').matches(/^[A-Za-zà-úÀ-Ú ]+$/, 'Name field must have only characters a-z '),
-        cpf: yup.string().required('Required Field').min(11, 'Verify CPF').max(11, 'Verify CPF')
-          .matches(/^[0-9]*$/, 'CPF must have only numbers'),
-        email: yup.string().required('Required Field').max(30,'Email field max length is 30').nullable(),
+        name: yup.string().required('Required Field').matches(/^[A-Za-zà-úÀ-Ú ]+$/, 'Name field must have only characters a-z ')
+        .max(50, 'Name field max length is 50'),
+        cpf: yup.string().required('Required Field').matches(/^[0-9]*$/, 'CPF must have only numbers')
+        .min(11, 'Verify CPF').max(11, 'Verify CPF'),
+        email: yup.string().required('Required Field').max(20,'Email field max length is 30').nullable(),
         birthDate: yup.date().required('Required Field').nullable(),
         appDate: yup.date().required('Required Field').nullable(),
         appTime: yup.date().required('Required Field').nullable(),
         isSolved: yup.bool(),
-        report: yup.string().max(70,'Report field max lenght is 70')
+        report: yup.string().max(30,'Report field max lenght is 30')
       });
 
       return (
           <div>
-              <h1>{pageTitle}</h1>
+            <h1>Create Appointment</h1>
               <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -126,8 +125,8 @@ function FillForm() {
                   name="appTime"
                 />
                 <br />
-                <Button name="submit" type="submit">Post Form</Button>
-                {pageTitle}
+                <Button name="submit" type="submit">Create Appointment</Button>
+                
               </Form>
             )
           }

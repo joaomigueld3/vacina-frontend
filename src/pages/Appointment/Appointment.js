@@ -85,12 +85,15 @@ import {
       }
     }, [form, isNewApp, navigate, appId]);
   
+    const validationSchema = yup.object({
+        isSolved: yup.bool(),
+        report: yup.string().max(30,'Report field max lenght is 70')
+    });
     
 
     return (
       <div>
         <h1>{pageTitle}</h1>
-  
         <InputWrapper id="name" required label="Name" description="Appointment Fullname">
           <Input
             id="name"
@@ -98,6 +101,9 @@ import {
             onChange={onChange}
             placeholder="John Doe"
             value={form.name}
+            disabled
+            
+            
           />
         </InputWrapper>
   
@@ -108,11 +114,13 @@ import {
             onChange={onChange}
             placeholder="09125345678"
             value={form.cpf}
+            disabled
           />
         </InputWrapper>
 
         <InputWrapper id="isSolved" required label="Is Vaccinated?" mb={8}>
           <Input
+            validationSchema={validationSchema.isSolved}
             label="Is Vaccinated?"
             id="isSolved"
             name="isSolved"
@@ -124,6 +132,7 @@ import {
 
         <InputWrapper id="report" required label="Report" mb={8}>
           <Input
+            validationSchema={validationSchema.report}
             label="Report"
             id="report"
             name="report"
