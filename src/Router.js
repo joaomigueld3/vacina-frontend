@@ -23,8 +23,6 @@ const Router=()=>{
                     <Route path=":fillForm" element={<FillForm />} />    
                     </Route>             
                 </Routes>
-        <Link to="/">Home</Link> &ensp;
-        <Link to="/appointment">Appointment</Link> &ensp;
         
         </BrowserRouter>
     )
