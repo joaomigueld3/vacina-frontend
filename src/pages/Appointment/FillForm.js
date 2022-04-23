@@ -4,17 +4,15 @@ import {
     InputWrapper,
     Autocomplete,
     Select,
-    PasswordInput,
     Button,
   } from "@mantine/core";
 import {
   Formik, Form,
 } from 'formik';
 import * as yup from 'yup';
-import { toast } from 'react-toastify';
 import { showNotification } from "@mantine/notifications";
-import FormikControl from '../Formik/FormikControl';
-import axios from '../../utils/api';
+import FormikControl from '../../components/Formik/FormikControl';
+import axios from '../../services/api';
 import { useNavigate, useParams } from "react-router-dom";
 
 
@@ -42,9 +40,9 @@ function FillForm() {
             name: values.name,
             cpf: values.cpf,
             email: values.email,
-            birthDate: values.birthDate.valueOf(),
-            appDate: values.appDate.toDateString(),
-            appTime: values.appTime._d.toLocaleTimeString(),
+            birthDate: values.birthDate,
+            appDate: values.appDate,
+            appTime: values.appTime._d.toLocaleTimeString().slice(0,5),
             isSolved: false,
             report: '',
           });
@@ -77,7 +75,9 @@ function FillForm() {
       });
 
       return (
-        <Formik
+          <div>
+              <h1>{pageTitle}</h1>
+              <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={onSubmit}
@@ -102,6 +102,14 @@ function FillForm() {
                 />
                 <br />
                 <FormikControl
+                  control="input"
+                  type="text"
+                  label="Email"
+                  name="email"
+                  placeholder="john@gmail.com"
+                />
+                <br />
+                <FormikControl
                   control="date"
                   label="BirthDate"
                   name="birthDate"
@@ -123,10 +131,14 @@ function FillForm() {
                 />
                 <br />
                 <Button name="submit" type="submit">Post Form</Button>
+                {pageTitle}
               </Form>
             )
           }
         </Formik>
+
+          </div>
+        
       );
 }
 export default FillForm;

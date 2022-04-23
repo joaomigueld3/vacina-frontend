@@ -23,6 +23,7 @@ const User=()=>{
 
 
     const onEditAppointment = (_id) =>{
+        
         /*fetch(`http://localhost:3333/api/users/${_id}`, {method: "PUT"})
         .then(()=>setUsers(users.filter((user) => user._id !==_id)))
         

@@ -14,9 +14,9 @@ import {
   import DateView from 'react-datepicker';
   import "react-datepicker/dist/react-datepicker.css"
   import * as yup from 'yup';
-  import FormikControl from '../Formik/FormikControl';
+  
   import axios from "../../services/api";
-    import AutoCompleteItem from "../../components/AutoCompleteItem";
+  import AutoCompleteItem from "../../components/AutoCompleteItem";
   
 
   const Appointment = () => {
@@ -36,8 +36,8 @@ import {
   
     
   
-    const isNewApp = appId === "new";
-    const pageTitle = isNewApp ? "Create Appointment" : "Update Appointment";
+    const isNewApp = appId === "update";
+    const pageTitle = isNewApp === "Update Appointment OG";
   
     useEffect(() => {
       if (!isNewApp) {
@@ -71,15 +71,13 @@ import {
     const onSubmit = useCallback(async () => {
       try {
         if (isNewApp) {
-          await axios.post("/appointment", form);
-        } else {
           await axios.put(`/appointment/${appId}`, form);
         }
   
         showNotification({
           color: "green",
           title: "Success",
-          message: `Appointment ${isNewApp ? "created" : "updated"} with success`,
+          message: `Appointment ${isNewApp}  "updated"} with success`,
         });
   
         navigate("/appointment");
