@@ -5,7 +5,7 @@ import Appointment from "./pages/Appointment/Appointment";
 import Registrations from "./pages/Registration";
 import{BrowserRouter, Routes, Route, Link, Outlet} from "react-router-dom"
 import Layout from "./components/Layout"
-
+import FillForm from "./pages/Appointment/FillForm";
 
 
 const Router=()=>{
@@ -18,11 +18,11 @@ const Router=()=>{
                      <Route path="appointment" element={<Outlet />}>
                         <Route element={<Appointments />} index />
                         <Route element={<Appointment />} path=":appId"/>
-                    </Route>    
+                    </Route>
+                    
+                    <Route path=":fillForm" element={<FillForm />} />    
                     </Route>             
                 </Routes>
-        <Link to="/">Home</Link> &ensp;
-        <Link to="/appointment">Appointment</Link> &ensp;
         
         </BrowserRouter>
     )

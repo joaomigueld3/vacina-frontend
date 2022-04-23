@@ -1,8 +1,8 @@
 import React from "react";
 import {
   GitPullRequest,
-  AlertCircle,
-  Messages,
+  Database,
+  Ticket,
  
 } from "tabler-icons-react";
 import { ThemeIcon, UnstyledButton, Group, Text } from "@mantine/core";
@@ -49,12 +49,17 @@ const routes = [
     path: "/",
   },
   {
-    icon: <AlertCircle size={16} />,
+    icon: <Database size={16} />,
     color: "teal",
-    label: "Appointment",
+    label: "Appointment List",
     path: "/appointment",
   },
-  
+  {
+    icon: <Ticket size={16} />,
+    color: "yellow",
+    label: "Appointment Form",
+    path: "/form",
+  },
   
 ];
 

@@ -18,11 +18,12 @@ const User=()=>{
     },[]);  
 
     const onCreateAppointment = ()=>{
-        navigate("new")
+        //navigate("new")
     }
 
 
     const onEditAppointment = (_id) =>{
+        
         /*fetch(`http://localhost:3333/api/users/${_id}`, {method: "PUT"})
         .then(()=>setUsers(users.filter((user) => user._id !==_id)))
         
@@ -52,8 +53,8 @@ const User=()=>{
 
     return(
         <div>
-            <h1>Appointment ({appointments.length})</h1>
-            <Button onClick={onCreateAppointment}>  Create Appointment</Button>
+            <h1>Appointments ({appointments.length})</h1>
+            
             <Table horizontalSpacing="xs" verticalSpacing="xs" fontSize="xs" 
             highlightOnHover={true} striped={true} overflow="hidden"  >
                 <thead>
