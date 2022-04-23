@@ -16,16 +16,16 @@ const User=()=>{
         .then((response)=>setAppointments(response.data))
         .catch((error)=> console.error(error));
     },[]);  
-
+    
     const onCreateAppointment = ()=>{
         //navigate("new")
     }
 
 
-    const onEditAppointment = (_id) =>{
-        
-        /*fetch(`http://localhost:3333/api/users/${_id}`, {method: "PUT"})
-        .then(()=>setUsers(users.filter((user) => user._id !==_id)))
+    const onEditAppointment = async(_id) =>{
+        /*
+        await axios.put(`http://localhost:4444/api/appointment/${_id}`)
+        .then(()=>setAppointments(appointments.filter((app) => app._id !==_id)))
         
         .catch((error)=> console.error(error));*/
     }

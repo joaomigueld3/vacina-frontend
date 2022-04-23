@@ -1,9 +1,6 @@
 import {
     Input,
     InputWrapper,
-    Autocomplete,
-    Select,
-    PasswordInput,
     Button,
   } from "@mantine/core";
   import { DatePicker } from "@mantine/dates";
@@ -16,7 +13,6 @@ import {
   import * as yup from 'yup';
   import FormikControl from "../../components/Formik/FormikControl";
   import axios from "../../services/api";
-    import AutoCompleteItem from "../../components/AutoCompleteItem";
   
 
   const Appointment = () => {
