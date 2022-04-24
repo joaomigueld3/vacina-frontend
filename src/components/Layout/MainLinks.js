@@ -1,30 +1,37 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/jsx-filename-extension */
+import React from 'react';
 import {
   GitPullRequest,
   Database,
   Ticket,
- 
-} from "tabler-icons-react";
-import { ThemeIcon, UnstyledButton, Group, Text } from "@mantine/core";
-import { useNavigate } from "react-router-dom";
 
-function MainLink({ icon, color, label, path }) {
+} from 'tabler-icons-react';
+import {
+  ThemeIcon, UnstyledButton, Group, Text,
+} from '@mantine/core';
+import { useNavigate } from 'react-router-dom';
+
+function MainLink({
+  icon, color, label, path,
+}) {
   const navigate = useNavigate();
 
   return (
     <UnstyledButton
       onClick={() => navigate(path)}
       sx={(theme) => ({
-        display: "block",
-        width: "100%",
+        display: 'block',
+        width: '100%',
         padding: theme.spacing.xs,
         borderRadius: theme.radius.sm,
         color:
-          theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
+          theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.black,
 
-        "&:hover": {
+        '&:hover': {
           backgroundColor:
-            theme.colorScheme === "dark"
+            theme.colorScheme === 'dark'
               ? theme.colors.dark[6]
               : theme.colors.gray[0],
         },
@@ -44,23 +51,23 @@ function MainLink({ icon, color, label, path }) {
 const routes = [
   {
     icon: <GitPullRequest size={16} />,
-    color: "blue",
-    label: "Home",
-    path: "/",
+    color: 'blue',
+    label: 'Home',
+    path: '/',
   },
   {
     icon: <Database size={16} />,
-    color: "teal",
-    label: "Appointment List",
-    path: "/appointment",
+    color: 'teal',
+    label: 'List of Appointments',
+    path: '/appointment',
   },
   {
     icon: <Ticket size={16} />,
-    color: "yellow",
-    label: "Appointment Form",
-    path: "/form",
+    color: 'yellow',
+    label: 'Schedule and Appointment',
+    path: '/form',
   },
-  
+
 ];
 
 export default function MainLinks() {
