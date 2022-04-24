@@ -8,6 +8,7 @@ import TextError from './TextError';
 function DatePicker(props) {
   const { label, name, ...otherProps } = props;
   return (
+    // eslint-disable-next-line react/jsx-filename-extension
     <div>
       <label htmlFor={name}>{label}</label>
       <br />
