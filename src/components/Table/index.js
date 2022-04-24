@@ -1,6 +1,11 @@
-import { Button, Table } from "@mantine/core";
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable react/prop-types */
+import { Button, Table } from '@mantine/core';
 
-const TableComponent = ({ actions = [], columns = [], rows = [] }) => {
+function TableComponent({ actions = [], columns = [], rows = [] }) {
   return (
     <Table highlightOnHover striped>
       <thead>
@@ -20,7 +25,7 @@ const TableComponent = ({ actions = [], columns = [], rows = [] }) => {
 
               return (
                 <td key={index}>
-                  {typeof column.render === "function"
+                  {typeof column.render === 'function'
                     ? column.render(value)
                     : value}
                 </td>
@@ -28,7 +33,9 @@ const TableComponent = ({ actions = [], columns = [], rows = [] }) => {
             })}
 
             <td>
-              {actions.map(({ icon, name, onClick, ...props }, index) => (
+              {actions.map(({
+                icon, name, onClick, ...props
+              }, index) => (
                 <Button
                   leftIcon={icon}
                   key={index}
@@ -44,6 +51,6 @@ const TableComponent = ({ actions = [], columns = [], rows = [] }) => {
       </tbody>
     </Table>
   );
-};
+}
 
 export default TableComponent;

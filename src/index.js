@@ -1,10 +1,11 @@
-import { ColorSchemeProvider, MantineProvider } from "@mantine/core";
-import { NotificationsProvider } from "@mantine/notifications";
-import { ModalsProvider } from "@mantine/modals";
+/* eslint-disable react/jsx-filename-extension */
+import { ColorSchemeProvider, MantineProvider } from '@mantine/core';
+import { NotificationsProvider } from '@mantine/notifications';
+import { ModalsProvider } from '@mantine/modals';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-//import App from './pages/Launch/App.js';
+// import App from './pages/Launch/App.js';
 import Router from './Router';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
@@ -18,7 +19,7 @@ root.render(
         <ModalsProvider>
           <Router />
         </ModalsProvider>
-      </NotificationsProvider>    
+      </NotificationsProvider>
     </ColorSchemeProvider>
-  </MantineProvider>
-); 
+  </MantineProvider>,
+);
