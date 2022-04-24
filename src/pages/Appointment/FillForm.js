@@ -12,7 +12,7 @@ import FormikControl from '../../components/Formik/FormikControl';
 import axios from '../../services/api';
 
 function FillForm() {
-  const { navigate } = useNavigate();
+  const navigate = useNavigate();
   const { appId } = useParams();
   const initialValues = {
     name: '',

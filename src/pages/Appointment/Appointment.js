@@ -13,7 +13,7 @@ import * as yup from 'yup';
 import axios from '../../services/api';
 
 function Appointment() {
-  const { navigate } = useNavigate();
+  const navigate = useNavigate();
   const { appId } = useParams();
   const [form, setForm] = useState({
     name: '',
