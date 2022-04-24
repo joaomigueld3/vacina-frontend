@@ -62,7 +62,7 @@ function FillForm() {
     cpf: yup.string().required('Required Field').matches(/^[0-9]*$/, 'CPF must have only numbers')
       .min(11, 'Verify CPF')
       .max(11, 'Verify CPF'),
-    email: yup.string().required('Required Field').max(20, 'Email field max length is 30').nullable(),
+    email: yup.string().required('Required Field').max(30, 'Email field max length is 30').nullable(),
     birthDate: yup.date().required('Required Field').nullable(),
     appDate: yup.date().required('Required Field').nullable(),
     appTime: yup.date().required('Required Field').nullable(),

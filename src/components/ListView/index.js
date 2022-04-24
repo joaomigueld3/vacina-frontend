@@ -1,19 +1,24 @@
-import { useEffect, useState } from "react";
-import { showNotification } from "@mantine/notifications";
-import { Pencil, Trash } from "tabler-icons-react";
-import { useModals } from "@mantine/modals";
-import { Button, Text } from "@mantine/core";
+/* eslint-disable no-alert */
+/* eslint-disable no-console */
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable react/prop-types */
+import { useEffect, useState } from 'react';
+import { showNotification } from '@mantine/notifications';
+import { Pencil, Trash } from 'tabler-icons-react';
+import { useModals } from '@mantine/modals';
+import { Button, Text } from '@mantine/core';
 
-import axios from "../../services/api";
-import Table from "../Table";
+import axios from '../../services/api';
+import Table from '../Table';
 
-const ListView = ({
+function ListView({
   columns,
   endpoint,
   title,
   forceRefetch,
   onClickActionButton = () => {},
-}) => {
+}) {
   const [rows, setRows] = useState([]);
   const modals = useModals();
 
@@ -32,32 +37,35 @@ const ListView = ({
         setRows((prevRows) => prevRows.filter(({ id }) => row.id !== id));
 
         showNotification({
-          color: "green",
-          title: "Deleted",
+          color: 'green',
+          title: 'Deleted',
           message: `${title} successfully removed`,
         });
       } catch (error) {
         showNotification({
-          color: "red",
-          title: "Error",
+          color: 'red',
+          title: 'Error',
           message: `Error delete ${title}`,
         });
       }
     };
 
     modals.openConfirmModal({
-      title: "Delete",
+      title: 'Delete',
       centered: true,
       children: (
         <Text size="sm">
-          Are you sure you want to delete your {title}? This action is
+          Are you sure you want to delete your
+          {' '}
+          {title}
+          ? This action is
           destructive and you cannot restore your data.
         </Text>
       ),
       labels: { confirm: `Delete ${title}`, cancel: "No don't delete it" },
-      confirmProps: { color: "red" },
+      confirmProps: { color: 'red' },
       closeOnClickOutside: false,
-      onCancel: () => alert("Cancel"),
+      onCancel: () => alert('Cancel'),
       onConfirm: onConfirmDeletion,
     });
   };
@@ -69,7 +77,7 @@ const ListView = ({
     },
     {
       mt: 8,
-      color: "red",
+      color: 'red',
       leftIcon: <Trash />,
       onClick: onDelete,
     },
@@ -80,12 +88,14 @@ const ListView = ({
       <h1>{`${title} (${rows.length})`}</h1>
 
       <Button mb={16} onClick={() => onClickActionButton()}>
-        Add {title}
+        Add
+        {' '}
+        {title}
       </Button>
 
       <Table actions={actions} columns={columns} rows={rows} />
     </>
   );
-};
+}
 
 export default ListView;
