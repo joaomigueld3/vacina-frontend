@@ -7,6 +7,14 @@ Frontend application built with **React.js**, designed for managing vaccination 
 
 ---
 
+## 🎨 Tech Stack
+<img align="center" alt="Joao-react" height="30" width="40" src="https://skillicons.dev/icons?i=react&theme=light"> React.js – Frontend framework  
+✅ Mantine – UI components & styling  
+✅ Formik – Form management  
+✅ Yup – Form validation  
+✅ Axios – HTTP client  
+✅ SWR – Data fetching & real-time updates 
+
 ## 🚀 Installation & Setup  
 
 ### 1️⃣ Clone the Repository  
@@ -48,11 +56,3 @@ npm start
 ✔ Create Appointment button:  
 - Sends a POST request to the API
 - On success (200 response), redirects to List of Appointments
-
-## 🎨 Tech Stack
-✅ React.js – Frontend framework  
-✅ Mantine – UI components & styling  
-✅ Formik – Form management  
-✅ Yup – Form validation  
-✅ Axios – HTTP client  
-✅ SWR – Data fetching & real-time updates  
