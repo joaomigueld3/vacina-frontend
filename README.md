@@ -11,8 +11,8 @@ Frontend application built with **React.js**, designed for managing vaccination 
 
 ### 1️⃣ Clone the Repository  
 ```sh
-git clone https://github.com/your-username/vacina-frontend.git
-cd vacina-frontend
+git clone https://github.com/your-username/vaccination-app-front.git
+cd vaccination-app-front
 ```
 
 2️⃣ Install Dependencies
